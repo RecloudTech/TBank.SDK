@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>0.1.0-beta2</Version>
+        <Title>Rc.TBank.SDK</Title>
+        <Authors>LLC "Recloud"</Authors>
+        <Description>This NuGet package provides a simple and convenient interface for making payments through the TBank API using C# code. It is designed specifically for integration with the business environment and is designed to simplify the process of conducting financial transactions. For detailed information and code examples, please visit the Official Developer's Page.</Description>
+        <Copyright>© 2024 LLC "Recloud"</Copyright>
+        <PackageProjectUrl>https://github.com/RecloudTech/TBank.SDK</PackageProjectUrl>
+        <PackageIcon>Avatar.png</PackageIcon>
+        <RepositoryUrl>https://github.com/RecloudTech/TBank.SDK</RepositoryUrl>
+        <RepositoryType>Public</RepositoryType>
+        <PackageTags>TBank, Tinkoff, API, SDK, Payments, C#</PackageTags>
+        <PackageId>Recloud.TBank.SDK</PackageId>
+        <PackageReleaseNotes>Initial beta release of Rc.TBank.SDK, includes basic payment integration and transaction handling.</PackageReleaseNotes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Update="Models\DefaultCardData.cs">
+            <DependentUpon>CardData.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Models\Responses\InitAcquiringResponse.cs">
+            <DependentUpon>BaseAcquiringResponse.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Models\Responses\FinishAuthorizeAcquiringResponse.cs">
+            <DependentUpon>BaseAcquiringResponse.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Models\Responses\ChargeAcquiringResponse.cs">
+            <DependentUpon>BaseAcquiringResponse.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Models\Responses\GetStateAcquiringResponse.cs">
+            <DependentUpon>BaseAcquiringResponse.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Models\Responses\GetCardListResponse.cs">
+            <DependentUpon>BaseAcquiringResponse.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Models\Responses\RemoveCardAcquiringResponse.cs">
+            <DependentUpon>BaseAcquiringResponse.cs</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Text.Json" Version="8.0.4"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Avatar.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+</Project>

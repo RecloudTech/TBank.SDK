@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0F7EE4D3-A517-4F24-998A-B7177C151AF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{83547505-17E4-4EAB-99C7-C0D48670CC97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rc.TBank.SDK", "src\Rc.TBank.SDK\Rc.TBank.SDK.csproj", "{FB0A8580-9C27-46F4-A0F4-890983CF5A93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rc.TBank.Tests", "tests\Rc.TBank.Tests\Rc.TBank.Tests.csproj", "{2F58DCB4-4010-4C4E-A561-AC582432B617}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{343235EE-6196-4C9E-B7DC-005945E2E9E6}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FB0A8580-9C27-46F4-A0F4-890983CF5A93} = {0F7EE4D3-A517-4F24-998A-B7177C151AF7}
+		{2F58DCB4-4010-4C4E-A561-AC582432B617} = {83547505-17E4-4EAB-99C7-C0D48670CC97}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB0A8580-9C27-46F4-A0F4-890983CF5A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB0A8580-9C27-46F4-A0F4-890983CF5A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB0A8580-9C27-46F4-A0F4-890983CF5A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB0A8580-9C27-46F4-A0F4-890983CF5A93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F58DCB4-4010-4C4E-A561-AC582432B617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F58DCB4-4010-4C4E-A561-AC582432B617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F58DCB4-4010-4C4E-A561-AC582432B617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F58DCB4-4010-4C4E-A561-AC582432B617}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

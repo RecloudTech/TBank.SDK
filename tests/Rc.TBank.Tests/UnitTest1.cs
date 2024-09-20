@@ -72,4 +72,11 @@ public class Tests
         var qrCodeInfo = await _acquiringSdk.Tpay.GetPaymentInfoAsync(paymentId);
         var qrCode = await _acquiringSdk.Tpay.GetQRCodeAsync(paymentId);
     }
+
+    [Test]
+    public async Task InitPaymentBySbp()
+    {
+        var paymentId = await _acquiringSdk.FastPaymentSystem.InitPayAsync(1000, Guid.NewGuid().ToString(), "RcPay-2024");
+        var qrCode = await _acquiringSdk.FastPaymentSystem.GetPaymentInfoAsync(paymentId);
+    }
 }

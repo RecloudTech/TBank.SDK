@@ -1,4 +1,6 @@
+using System.ComponentModel;
 using System.Text.Json.Serialization;
+using Rc.TBank.SDK.Core.Helpers.Converters;
 
 namespace Rc.TBank.SDK.Models.Responses;
 
@@ -13,7 +15,7 @@ public class BaseAcquiringResponse
     [JsonPropertyName("Status")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public PaymentStatus Status { get; set; }
-
+    [JsonConverter(typeof(StringOrNumberConverter))]
     [JsonPropertyName("PaymentId")] public string PaymentId { get; set; }
 
     [JsonPropertyName("OrderId")] public string OrderId { get; set; }

@@ -8,6 +8,7 @@ public class Fields
     public static string SENDEMAIL = "SendEmail";
     public static string TOKEN = "Token";
     public static string DATA = "DATA";
+    public static string DATATYPE = "DataType";
     public static string CARDDATA = "CardData";
     public static string AMOUNT = "Amount";
     public static string ORDERID = "OrderId";

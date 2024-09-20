@@ -17,6 +17,7 @@ public class AcquiringSdk
     private readonly StringKeyCreator _publicKeyCreator;
     private readonly string _terminalKey;
     public ITPayProcedures Tpay { get; set; }
+    public IFastPaymentSystem FastPaymentSystem { get; set; }
 
     public AcquiringSdk(string terminalKey, string password, string publicKey, HttpClient? httpClient = null) : this(
         terminalKey, password, new StringKeyCreator(publicKey))
@@ -24,6 +25,7 @@ public class AcquiringSdk
         _httpClient = httpClient ?? new HttpClient();
 
         Tpay = new TPayProcedures(terminalKey, _httpClient, this);
+        FastPaymentSystem = new FastPaymentSystem(password, terminalKey, _httpClient, this); 
     }
 
 
@@ -263,7 +265,7 @@ public class AcquiringSdk
         }
     }
 
-    private AcquiringApi GetApi(string operation)
+    internal AcquiringApi GetApi(string operation)
     {
         return IsDeveloperMode
             ? new AcquiringApi(string.Concat(API_URL_DEBUG, operation), _httpClient)

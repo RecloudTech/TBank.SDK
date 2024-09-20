@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>0.1.0-beta2</Version>
+        <Version>0.1.0-beta4</Version>
         <Title>Rc.TBank.SDK</Title>
         <Authors>LLC "Recloud"</Authors>
         <Description>This NuGet package provides a simple and convenient interface for making payments through the TBank API using C# code. It is designed specifically for integration with the business environment and is designed to simplify the process of conducting financial transactions. For detailed information and code examples, please visit the Official Developer's Page.</Description>

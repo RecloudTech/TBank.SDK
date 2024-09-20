@@ -128,6 +128,11 @@ public class AcquiringApi
         return SendAsync<GetStateAcquiringResponse>(Url, request.ToDictionary());
     }
 
+    internal Task<FastPaymentSystemResponse?> GetFastPaymentSystemQrData(FastPaymentSystemQrRequest request)
+    {
+        return SendAsync<FastPaymentSystemResponse>(Url, request.ToDictionary());
+    }
+
     internal async Task<GetCardListResponse[]> GetCardList(GetCardListRequest acquiringResponse)
     {
         var response = await SendAsync<GetCardListResponse[]>(Url, acquiringResponse.ToDictionary());

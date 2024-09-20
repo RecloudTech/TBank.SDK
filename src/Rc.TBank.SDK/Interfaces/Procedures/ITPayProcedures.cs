@@ -1,15 +1,6 @@
 namespace Rc.TBank.SDK.Interfaces.Procedures;
 
-public interface ITPayProcedures
+public interface ITPayProcedures : IPayProcedures, IQRPayProcedures
 {
-    Task<bool> CanPayAsync();
-    Task<string> InitPayAsync(int amount, 
-        string orderId, 
-        string customerKey, 
-        string description = default!, 
-        string payForm = default!, 
-        bool recurrent = default);
-
-    Task<(string RedirectUrl, string WebQR)> GetPaymentInfoAsync(string paymentId);
-    Task<Stream> GetQRCodeAsync(string paymentId);
+    
 }

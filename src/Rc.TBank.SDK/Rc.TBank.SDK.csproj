@@ -18,6 +18,8 @@
         <PackageTags>TBank, Tinkoff, API, SDK, Payments, C#</PackageTags>
         <PackageId>Recloud.TBank.SDK</PackageId>
         <PackageReleaseNotes>Initial beta release of Rc.TBank.SDK, includes basic payment integration and transaction handling.</PackageReleaseNotes>
+        <PackageLicenseUrl>https://github.com/RecloudTech/TBank.SDK?tab=Apache-2.0-1-ov-file</PackageLicenseUrl>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <ItemGroup>

@@ -3,7 +3,7 @@ namespace Rc.TBank.SDK.Models.Requests;
 /// <summary>
 ///     Представляет настройки запроса.
 /// </summary>
-internal abstract class AcquiringRequest
+public abstract class AcquiringRequest
 {
     #region Methods
 

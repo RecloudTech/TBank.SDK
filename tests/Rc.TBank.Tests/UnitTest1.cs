@@ -1,5 +1,6 @@
 using Rc.TBank.SDK;
 using Rc.TBank.SDK.Models;
+using Rc.TBank.SDK.Models.Responses;
 
 namespace Rc.TBank.Tests;
 
@@ -10,9 +11,9 @@ public class Tests
     [SetUp]
     public void Setup()
     {
-        var terminalKey = "";
-        var password = "";
-        var publicKey = "";
+        var terminalKey = "1743867090370DEMO";
+        var password = "ZCzoD&_#VpFnCfx&";
+        var publicKey = password;
 
         _acquiringSdk = new AcquiringSdk(terminalKey, password, publicKey)
         {
@@ -23,14 +24,24 @@ public class Tests
     [Test]
     public async Task InitTest()
     {
-        var paymentId = await _acquiringSdk.Init(1000, Guid.NewGuid().ToString(), "RcPay-2024");
-        var result = await _acquiringSdk.FinishAuthorize(paymentId, false, new DefaultCardData
+        var payment = await _acquiringSdk.Init(1000, Guid.NewGuid().ToString(), "RcPay-2024");
+        
+        var status = await _acquiringSdk.GetState(payment.PaymentId);
+        
+        // var check3Ds = await _acquiringSdk.Check3DsVersion(paymentId, new DefaultCardData
+        // {
+        //     Pan = "0000000000000000",
+        //     ExpiryDate = "1230",
+        //     SecureCode = "111"
+        // });
+        
+        var result = await _acquiringSdk.FinishAuthorize(payment.PaymentId, false, new DefaultCardData
         {
             Pan = "0000000000000000",
             ExpiryDate = "1230",
             SecureCode = "111"
         }, "support@recloud.tech");
-
+        
         Assert.Pass();
     }
 
@@ -68,15 +79,15 @@ public class Tests
     [Test]
     public async Task InitPaymentByTBank()
     {
-        var paymentId = await _acquiringSdk.Tpay.InitPayAsync(1000, Guid.NewGuid().ToString(), "RcPay-2024");
-        var qrCodeInfo = await _acquiringSdk.Tpay.GetPaymentInfoAsync(paymentId);
-        var qrCode = await _acquiringSdk.Tpay.GetQRCodeAsync(paymentId);
+        var payment = await _acquiringSdk.Tpay.InitPayAsync(1000, Guid.NewGuid().ToString(), "RcPay-2024");
+        var qrCodeInfo = await _acquiringSdk.Tpay.GetPaymentInfoAsync(payment.PaymentId);
+        var qrCode = await _acquiringSdk.Tpay.GetQRCodeAsync(payment.PaymentId);
     }
 
     [Test]
     public async Task InitPaymentBySbp()
     {
-        var paymentId = await _acquiringSdk.FastPaymentSystem.InitPayAsync(1000, Guid.NewGuid().ToString(), "RcPay-2024");
-        var qrCode = await _acquiringSdk.FastPaymentSystem.GetPaymentInfoAsync(paymentId);
+        var payment = await _acquiringSdk.FastPaymentSystem.InitPayAsync(1000, Guid.NewGuid().ToString(), "RcPay-2024");
+        var qrCode = await _acquiringSdk.FastPaymentSystem.GetPaymentInfoAsync(payment.PaymentId);
     }
 }

@@ -55,7 +55,7 @@ public class AcquiringSdk
     /// <param name="payForm">Название шаблона формы оплаты продавца.</param>
     /// <param name="recurrent">Регистрирует платеж как рекуррентный.</param>
     /// <returns>Уникальный идентификатор транзакции в системе Банка.</returns>
-    public async Task<string> Init(decimal amount, string orderId, string customerKey, string description = default!,
+    public async Task<(string PaymentId, string PaymentURL)> Init(decimal amount, string orderId, string customerKey, string description = default!,
         string payForm = default!, bool recurrent = default)
     {
         var request = new InitRequestBuilder(_password, _terminalKey)
@@ -71,7 +71,7 @@ public class AcquiringSdk
         {
             var response = await GetApi(request.Operation).Init(request);
             if (response is { Success: true })
-                return response.PaymentId;
+                return (response.PaymentId, response.PaymentURL);
 
             throw new AcquiringApiException(response);
         }
@@ -83,8 +83,6 @@ public class AcquiringSdk
         {
             throw new AcquiringSdkException(ex.Message);
         }
-
-        return string.Empty;
     }
 
     /// <summary>
@@ -135,6 +133,42 @@ public class AcquiringSdk
             throw new AcquiringSdkException(ex.Message);
         }
     }
+    
+    // public async Task<object> Check3DsVersion(string paymentId, DefaultCardData cardData)
+    // {
+    //     var request = new CheckThreeDSVersionBuilder(_password, _terminalKey)
+    //         .SetPaymentId(paymentId)
+    //         .SetCardData(cardData.Encode(_publicKeyCreator.Create()))
+    //         .Build();
+    //
+    //     try
+    //     {
+    //         var response = await GetApi(request.Operation).FinishAuthorize(request);
+    //         if (response is null or { Success: false })
+    //             throw new AcquiringApiException(response);
+    //
+    //         return response.Status == PaymentStatus.DS_CHECKING
+    //             ? new ThreeDsData
+    //             {
+    //                 IsThreeDsNeed = true,
+    //                 ACSUrl = response.ACSUrl,
+    //                 MD = response.MD,
+    //                 PaReq = response.PaReq
+    //             }
+    //             : new ThreeDsData
+    //             {
+    //                 IsThreeDsNeed = false
+    //             };
+    //     }
+    //     catch (AcquiringApiException ex)
+    //     {
+    //         throw;
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         throw new AcquiringSdkException(ex.Message);
+    //     }
+    // }
 
     /// <summary>
     ///     Возвращает статус платежа.

@@ -9,12 +9,11 @@ public class TPayProcedures(string terminalKey, HttpClient httpClient, Acquiring
     private readonly TPayApi _tPayApi = new(terminalKey, httpClient, acquiringSdk);
     
     public Task<bool> CanPayAsync() => _tPayApi.CanPayAsync();
-    public Task<string> InitPayAsync(
-        int amount, 
-        string orderId, 
-        string customerKey, 
-        string description = default!, 
-        string payForm = default!, 
+    public Task<(string PaymentId, string PaymentURL)> InitPayAsync(int amount,
+        string orderId,
+        string customerKey,
+        string description = default!,
+        string payForm = default!,
         bool recurrent = default) 
         => _tPayApi.InitPayAsync(amount, orderId, customerKey, description, payForm, recurrent);
 

@@ -17,7 +17,7 @@ public class TPayApi(string terminalKey, HttpClient httpClient, AcquiringSdk acq
         return dto?.Params.Allowed ?? false;
     }
 
-    public Task<string> InitPayAsync(int amount, string orderId, string customerKey,
+    public Task<(string PaymentId, string PaymentURL)> InitPayAsync(int amount, string orderId, string customerKey,
         string description = default!,
         string payForm = default!, bool recurrent = default)
     {
